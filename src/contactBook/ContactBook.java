@@ -118,19 +118,17 @@ public class ContactBook {
             result = i;
         return result;
     }
-    private boolean hasEqualsNumbers () {
-        int i = 0;
+    public boolean hasEqualsNumbers () {
         boolean result = false;
-        while (i < counter && !result) {
-            int j = 0;
-            while(j < counter && !result) {
-                if (!contacts[i].equals(contacts[j]) || i == j)
-                j++;
-                else
-                result = true;
+            int number = 0;
+            for (int j = 0; j < getNumberOfContacts(); j++) {
+                number = contacts[j].getPhone();
+
+                for (int i = j; i < getNumberOfContacts() - 1; i++) {
+                    if (contacts[i + 1].getPhone() == number)
+                        result = true;
+                }
             }
-            i++;
-        }  
         return result;
     }
 }
