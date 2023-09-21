@@ -24,6 +24,8 @@ public class Main {
     public static final String BOOK_EMPTY = "contactBook.Contact book empty.";
     public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
+    public static final String SHARE_PHONE_NUMBERS = "There are contacts that share phone numbers.";
+    public static final String DIFFERENT_PHONE_NUMBERS = "All contacts have different phone numbers";
 
     public static final String PHONE_NOT_EXISTS = "Phone number does not exist.";
     public static void main(String[] args) {
@@ -53,6 +55,12 @@ public class Main {
                     break;
                 case LIST_CONTACTS:
                     listAllContacts(cBook);
+                    break;
+                case EQUAL_PHONE:
+                    equalPhone();
+                    break;
+                case GOOGLE_NUMBER:
+                    googleNumber(in, cBook);
                     break;
                 default:
                     System.out.println(COMMAND_ERROR);
@@ -147,6 +155,14 @@ public class Main {
             }
         }
         else System.out.println(BOOK_EMPTY);
+    }
+
+    private static void equalPhone(ContactBook cBook) {
+        if(cBook.hasEqualNumbers()){
+            System.out.println(SHARE_PHONE_NUMBERS);
+        }else{
+            System.out.println(DIFFERENT_PHONE_NUMBERS);
+        }
     }
 
     public static void googleNumber(Scanner in, ContactBook cBook) {
