@@ -104,6 +104,7 @@ public class ContactBook {
     public boolean hasContactNumber(int phone) {
         return searchIndexPhone(phone) >= 0;
     }
+
     private int searchIndexPhone(int phone) {
         int i = 0;
         int result = -1;
@@ -115,6 +116,21 @@ public class ContactBook {
                 i++;
         if (found)
             result = i;
+        return result;
+    }
+    private boolean hasEqualsNumbers () {
+        int i = 0;
+        boolean result = false;
+        while (i < counter && !result) {
+            int j = 0;
+            while(j < counter && !result) {
+                if (!contacts[i].equals(contacts[j]) || i == j)
+                j++;
+                else
+                result = true;
+            }
+            i++;
+        }  
         return result;
     }
 }
