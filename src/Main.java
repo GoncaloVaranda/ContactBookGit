@@ -25,6 +25,7 @@ public class Main {
     public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
 
+    public static final String PHONE_NOT_EXISTS = "Phone number does not exist.";
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         ContactBook cBook = new ContactBook();
@@ -146,5 +147,15 @@ public class Main {
             }
         }
         else System.out.println(BOOK_EMPTY);
+    }
+
+    public static void googleNumber(Scanner in, ContactBook cBook) {
+        int phone;
+        phone = in.nextInt();
+        in.nextLine();
+        if (cBook.hasContactNumber(phone)) {
+            System.out.println(cBook.searchContact(phone));
+        } else
+            System.out.println(PHONE_NOT_EXISTS);
     }
 }
